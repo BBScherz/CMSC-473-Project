@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
+#Fields: X_train, X_dev, X_test, y_train, y_dev, y_test, data, rating_dist
 class ProcessedData:
     def __init__(self):
         #Read in data
