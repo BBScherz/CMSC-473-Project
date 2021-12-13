@@ -8,14 +8,14 @@ def main():
     #Print data info
     data.dataInfo()
 
+    #ONLY CALL THIS FUNCTION IF WE WANT TO RECREATE adjectiveList.txt
     #Get all the adjectives
-    adjList = getAllAdjectives(data.X_train)
-    print(len(adjList))
-    print(adjList)
+    #adjList = getAllAdjectives(data.X_train)
+
 
 
 #Takes in the training data
-#Returns a lists of all of the unique adjectives in the training data
+#Writes a list of all the discovered adjectives to adjectives.txt
 def getAllAdjectives(xTrain):
     adjList = []
     nounList = []
@@ -40,6 +40,12 @@ def getAllAdjectives(xTrain):
         count += 1
         if(count % 5000 == 0):
             print("Sentence " + str(count) + " completed")
+
+    f = open("adjectiveList.txt", "w+", encoding="utf-8")
+    for i in adjList:
+        f.write(i)
+        f.write(',')
+    f.close()
     return adjList
 
 
