@@ -69,5 +69,8 @@ class ProcessedData:
             for review in self.X_train:
                 sentence_file.write(review + '\n')
 
+def main():
+    ProcessedData().dataInfo()
+    ProcessedData().showRatingDist()
 
-    
+main()
