@@ -1,4 +1,5 @@
 import re
+import spacy
 
 
 adjectives = []
@@ -26,22 +27,30 @@ def review_len(rvw):
     sen = re.split(" ", rvw)
     return len(sen)
 
+#Returns number of adjectives and a list of the adjectives
 def adj_count(rvw):
 
     adjs = 0
+    adjList = []
+    eng = spacy.load("en_core_web_sm")
 
     sens = re.split(" ", rvw)
     for word in sens:
 
         if(word in adjectives):
-            adjs += 1
+            spacyWord = eng(word)
+            if(spacyWord[0].pos_ == "ADJ"):
+                adjList.append(word)
+                adjs += 1
 
-    return adjs
+    return adjs, adjList
     
 
 
 if(__name__ == "__main__"):
     loadAdj()
 
+    adjFound, adjList = adj_count(tsen)
     print("Sentence length: ",review_len(tsen))
     print("Adjectives found: ",adj_count(tsen))
+    print(adjList)
