@@ -18,7 +18,6 @@ def main():
 
 #Generates the MaxEnt Baseline model and evauluates it. 
 def CalcMaxEntBaseline():
-    rvws = []
     labels = []
 
     #Load in reviews and labels
@@ -30,11 +29,8 @@ def CalcMaxEntBaseline():
             if(line == 0):
                 line += 1
             else:
-                rvws.append(row[0])
                 labels.append(int(row[1]))
                 line += 1
-
-        print(line - 1, " reviews loaded")
 
     train_labels = pd.Series(labels[:35000])
     dev_eval_labels = pd.Series(labels[35000:50000])
