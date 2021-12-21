@@ -68,9 +68,3 @@ class ProcessedData:
         with open("train_reviews.txt", 'w', encoding="utf-8") as sentence_file:
             for review in self.X_train:
                 sentence_file.write(review + '\n')
-
-def main():
-    ProcessedData().dataInfo()
-    ProcessedData().showRatingDist()
-
-main()

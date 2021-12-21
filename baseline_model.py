@@ -4,25 +4,6 @@ from sklearn.metrics import*
 
 
 def main():
-    rvws = []
-    labels = []
-
-    #Load in reviews and labels
-    with open("review.csv", "r", encoding="utf-8") as csv_file:
-        csv_reader = csv.reader(csv_file)
-        line = 0
-
-        for row in csv_reader:
-            if(line == 0):
-                line += 1
-            else:
-                rvws.append(row[0])
-                labels.append(row[1])
-                line += 1
-
-        print(line - 1, " reviews loaded")
-
-
     data = preprocessing.ProcessedData()
     mostFreqRating = getMostRating(data.y_train)
     predictions = []
